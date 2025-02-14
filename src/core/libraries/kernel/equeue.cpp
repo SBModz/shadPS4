@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2024 shadPS4 Emulator Project
+ // SPDX-FileCopyrightText: Copyright 2024 shadPS4 Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <thread>
@@ -84,11 +84,7 @@ bool EqueueInternal::TriggerEvent(u64 ident, s16 filter, void* trigger_data) {
         std::scoped_lock lock{m_mutex};
         for (auto& event : m_events) {
             if (event.event.ident == ident && event.event.filter == filter) {
-                if (filter == SceKernelEvent::Filter::VideoOut) {
-                    event.TriggerDisplay(trigger_data);
-                } else {
-                    event.Trigger(trigger_data);
-                }
+                event.Trigger(trigger_data);
                 has_found = true;
             }
         }
@@ -234,10 +230,6 @@ int PS4_SYSV_ABI sceKernelWaitEqueue(SceKernelEqueue eq, SceKernelEvent* ev, int
                 *out = eq->WaitForEvents(ev, num, *timo);
             }
         }
-    }
-
-    if (*out == 0) {
-        return ORBIS_KERNEL_ERROR_ETIMEDOUT;
     }
 
     return ORBIS_OK;
