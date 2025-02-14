@@ -1308,6 +1308,7 @@ void RegisterlibSceNet(Core::Loader::SymbolsResolver* sym) {
     LIB_FUNCTION("3qG7UJy2Fq8", "libSceNet", 1, "libSceNet", 1, 1, sceNetAddrConfig6Start);
     LIB_FUNCTION("P+0ePpDfUAQ", "libSceNet", 1, "libSceNet", 1, 1, sceNetAddrConfig6Stop);
     LIB_FUNCTION("PcdLABhYga4", "libSceNet", 1, "libSceNet", 1, 1, sceNetAllocateAllRouteInfo);
+    LIB_FUNCTION("lUk6wrGXyMw", "libScePosix", 1, "libkernel", 1, 1, sceNetRecvfrom);
     LIB_FUNCTION("xHq87H78dho", "libSceNet", 1, "libSceNet", 1, 1,
                  sceNetBandwidthControlGetDataTraffic);
     LIB_FUNCTION("c8IRpl4L74I", "libSceNet", 1, "libSceNet", 1, 1,
